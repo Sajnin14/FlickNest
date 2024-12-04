@@ -10,6 +10,8 @@ import MainPage from './MainPage';
 import Home from './maincomponents/Home';
 import Login from './auth/Login';
 import Registration from './auth/Registration';
+import AllMovies from './Pages/AllMovies';
+import Celebrity from './Pages/Celebrity';
 
 
 const router = createBrowserRouter([
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        path: '/allmovies',
+        element: <AllMovies></AllMovies>
+      },
+      {
+        path: '/celebrity',
+        element: <Celebrity></Celebrity>
       },
       {
         path: '/auth/register',

@@ -1,13 +1,14 @@
-import { NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
+import './nav.css'
 
 const Navbar = () => {
-    const links = <div className="flex flex-col md:flex-row gap-3">
+    const links = <div className="flex flex-col md:flex-row gap-3 items-center font-semibold text-gray-900">
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/allmovies'>All Movies</NavLink>
-        <NavLink to='/'>Celebrity Cronicles</NavLink>
+        <NavLink to='/celebrity'>Celebrity-Cronicles</NavLink>
     </div>
     return (
-        <div className="w-11/12 mx-auto">
+        <div className="w-11/12 mx-auto py-10">
             <div className="navbar bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -32,15 +33,16 @@ const Navbar = () => {
                         </ul>
                     </div>
                     {/* btn btn-ghost */}
-                    <a className="text-xl font-bold text-gray-900">Flick<span className="text-red-700">Nest</span></a>
+                    <a className="text-2xl font-bold text-gray-900">Flick<span className="text-red-700">Nest</span></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 font-semibold">
+                    <ul className="menu menu-horizontal px-1">
                         {links}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
+                <div className="navbar-end gap-3 font-semibold">
+                    <NavLink to='/auth/login'>Login</NavLink>
+                    <NavLink to='/auth/register'>Register</NavLink>
                 </div>
             </div>
         </div>
