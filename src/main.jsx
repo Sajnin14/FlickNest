@@ -12,6 +12,7 @@ import Login from './auth/Login';
 import Registration from './auth/Registration';
 import AllMovies from './Pages/AllMovies';
 import Celebrity from './Pages/Celebrity';
+import AuthProvider from './provider/AuthProvider';
 
 
 const router = createBrowserRouter([
@@ -45,6 +46,6 @@ const router = createBrowserRouter([
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <RouterProvider router={router} />
+    <AuthProvider> <RouterProvider router={router} /></AuthProvider>
   </StrictMode>,
 )
