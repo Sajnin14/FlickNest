@@ -6,12 +6,31 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import MainPage from './MainPage';
+import Home from './maincomponents/Home';
+import Login from './auth/Login';
+import Registration from './auth/Registration';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <MainPage></MainPage>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>
+      },
+      {
+        path: '/auth/register',
+        element: <Registration></Registration>
+      },
+      {
+        path: '/auth/login',
+        element: <Login></Login>
+      }
+      
+    ]
   },
 ]);
 createRoot(document.getElementById('root')).render(
