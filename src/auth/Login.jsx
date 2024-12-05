@@ -1,17 +1,37 @@
+import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const Login = () => {
+
+    const {signIn, setUser, googleSign} = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleLogin = e =>{
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
-        
+
+        signIn(email, password)
+        .then(res => {
+            setUser(res.user);
+            navigate('/');
+        })
+        .catch(err => {
+            toast.error(<p>{err.message}</p>, {
+                position: 'top-center'
+            })
+        })
+
+    }
+
+    const handleGoogle = () =>{
+        googleSign();
+        navigate('/');
     }
     return (
         <div>
@@ -44,7 +64,7 @@ const Login = () => {
                     <p className="text-center text-sm">Do not have an account? <Link to='/auth/register' className="text-blue-700 underline font-semibold">Register</Link></p>
 
 
-                    <button className="btn bg-base-300 mt-12 mx-5"><FcGoogle className="text-xl"></FcGoogle> Sign-in With Google</button>
+                    <button onClick={handleGoogle} className="btn bg-base-300 mt-12 mx-5"><FcGoogle className="text-xl"></FcGoogle> Sign-in With Google</button>
 
                 </div>
 
