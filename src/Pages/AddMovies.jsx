@@ -35,8 +35,25 @@ const AddMovies = () => {
         const rating = form.rating.value;
         const summery = form.summery.value;
 
+        const moviesValue = {poster, title, genreValue, time, yearValue, rating, summery}
+
         console.log(poster, title, genreValue, time, yearValue, rating, summery);
+
+        
+
+        fetch(`http://localhost:5000/allmovies`,{
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(moviesValue)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
     }
+
     return (
         <div className="w-11/12 mx-auto">
 
@@ -117,7 +134,7 @@ const AddMovies = () => {
                     </div>
 
                     <div className="form-control">
-                        <input type="submit" value="Add Movie" className="input input-bordered my-7 text-primary-content bg-red-700" />
+                        <input type="submit" value="Add Movie" className="input input-bordered my-7 text-primary-content bg-red-800" />
                     </div>
                 </form>
             </div>
