@@ -5,7 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Registration = () => {
-    const {createUser, googleSign, setUser} = useContext(AuthContext);
+    const {createUser, googleSign, setUser,  updateUser} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [errorMessage, setErrorMessage] = useState('');
@@ -30,6 +30,12 @@ const Registration = () => {
         createUser(email, password)
         .then(res => {
             setUser(res.user);
+            updateUser({displayName: name, photoURL: photo
+            })
+            .then(navigate('/'))
+            .catch(err => {
+                alert(err);
+            });
             navigate('/');
         })
         .catch(err => {

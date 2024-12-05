@@ -13,6 +13,8 @@ import Registration from './auth/Registration';
 import AllMovies from './Pages/AllMovies';
 import Celebrity from './Pages/Celebrity';
 import AuthProvider from './provider/AuthProvider';
+import PrivateRoute from './provider/PrivateRoute';
+import AddMovies from './Pages/AddMovies';
 
 
 const router = createBrowserRouter([
@@ -23,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+         path: '/addmovies',
+         element: <PrivateRoute><AddMovies></AddMovies></PrivateRoute>
       },
       {
         path: '/allmovies',

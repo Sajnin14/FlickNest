@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import './nav.css'
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
+import { IoPersonCircleOutline } from "react-icons/io5";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -9,6 +10,10 @@ const Navbar = () => {
     const links = <div className="flex flex-col md:flex-row gap-3 items-center font-semibold text-gray-900">
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/allmovies'>All Movies</NavLink>
+        {
+            user?.email && <NavLink to='/addmovies'>Add Movies</NavLink>
+        }
+        
         <NavLink to='/celebrity'>Celebrity-Cronicles</NavLink>
     </div>
     return (
@@ -36,7 +41,7 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    {/* btn btn-ghost */}
+                    
                     <a className="text-2xl font-bold text-gray-900">Flick<span className="text-red-700">Nest</span></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
@@ -45,10 +50,26 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <div className="navbar-end font-semibold">
+                <div className="navbar-end font-semibold flex items-center gap-1">
+                {
+                        user && user?.email ? <div>
+                            <div className="relative flex flex-col items-center group">
+                                <Link>
+                                    <img src={user.photoURL} className="w-10 h-10 rounded-full border-2 border-green-600" />
+                                    <p className="absolute w-2 h-2 bg-green-500 rounded-full top-0 right-1"></p>
+
+                                    <p className="absolute hidden group-hover:block top-11 font-semibold">{user.displayName}</p>
+                                </Link>
+
+                            </div>
+
+                        </div> : <p><IoPersonCircleOutline className="text-4xl"></IoPersonCircleOutline></p>
+                    }
+
                     {
-                        user ? <div>
-                            <button onClick={logOut} className="border border-gray-900 text-red-600 py-1 px-3 rounded-lg">log-out</button>
+                        user && user?.email ? <div className="flex items-center gap-2">
+                            
+                            <button onClick={logOut} className="border border-gray-900 text-red-600 py-1 px-2 rounded-lg">log-out</button>
                         </div> : <div className="flex items-center gap-3">
                             <NavLink className='border border-red-700 py-1 px-2 rounded-lg' to='/auth/login'>Login</NavLink>
                             <NavLink className='border border-red-700 py-1 px-2 rounded-lg' to='/auth/register'>Register</NavLink>

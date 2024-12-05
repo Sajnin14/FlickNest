@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../firbase/firebase.config";
 import { toast } from "react-toastify";
 
@@ -22,6 +22,11 @@ const AuthProvider = ({ children }) => {
     const signIn = (email, password) =>{
         setLoader(true);
         return signInWithEmailAndPassword(auth, email, password);
+    }
+
+    const updateUser = (updatedData) => {
+        setLoader(true);
+        return updateProfile(auth.currentUser, updatedData)
     }
 
     console.log(user);
@@ -68,6 +73,7 @@ const AuthProvider = ({ children }) => {
         signIn,
         googleSign,
         logOut,
+        updateUser,
 
     }
     return (
