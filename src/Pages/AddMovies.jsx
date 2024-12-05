@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const AddMovies = () => {
 
     const [genreValue, setGenreValue] = useState(null);
     const [yearValue, setYearValue] = useState('');
-    
+    // const [error, setError] = useState(false);
+
     const years = [];
     for (let i = 1990; i <= 2024; i++) {
         years.push(i);
@@ -15,44 +17,59 @@ const AddMovies = () => {
     }
 
     const handleYearChange = e => {
-          setYearValue(e.target.value);
+        setYearValue(e.target.value);
     }
 
-    const handleAddMovie = e =>{
+
+    const handleAddMovie = e => {
         e.preventDefault();
         const form = e.target;
         const poster = form.poster.value;
         const title = form.title.value;
-
-        // const genre = form.genre.value;
-        // setGenreValue(genre);
-
         const time = form.time.value;
-
-        // const year = form.year.value;
-        // setYearValue(year);
-
         const rating = form.rating.value;
         const summery = form.summery.value;
 
-        const moviesValue = {poster, title, genreValue, time, yearValue, rating, summery}
-
         console.log(poster, title, genreValue, time, yearValue, rating, summery);
 
-        
+        if (title.length < 2) {
+            toast.error('movie title should be at least 2 character',{
+                position: 'top-center'
+            });
+            return;
+        }
+        else if (time <= 60) {
+            toast.error('duration have to minimum 60 minute', {
+            position: 'top-center'
+            })
+            return;
+        }
+        else if (summery.length < 10) {
+            toast.error('summery should be minimum 10 character', {
+                position: 'top-center'
+            });
+            return;
 
-        fetch(`http://localhost:5000/allmovies`,{
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(moviesValue)
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-        })
+        }
+
+        else {
+            const moviesValue = { poster, title, genreValue, time, yearValue, rating, summery }
+            
+            fetch(`http://localhost:5000/allmovies`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(moviesValue)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                })
+        }
+
     }
+
 
     return (
         <div className="w-11/12 mx-auto">
@@ -130,7 +147,7 @@ const AddMovies = () => {
                             <span className="label-text">Summery</span>
                         </label>
                         <textarea name="summery" className="input input-bordered" required></textarea>
-                        {/* <input type="text" name='photo' placeholder="enter coffee photo" className="input input-bordered" required /> */}
+
                     </div>
 
                     <div className="form-control">
