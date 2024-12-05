@@ -1,9 +1,41 @@
+import { useState } from "react";
 
 const AddMovies = () => {
+
+    const [genreValue, setGenreValue] = useState(null);
+    const [yearValue, setYearValue] = useState('');
     
     const years = [];
-    for (let i = 1900; i <= 2100; i++) {
+    for (let i = 1990; i <= 2024; i++) {
         years.push(i);
+    }
+
+    const handleGenreChange = (e) => {
+        setGenreValue(e.target.value);
+    }
+
+    const handleYearChange = e => {
+          setYearValue(e.target.value);
+    }
+
+    const handleAddMovie = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const poster = form.poster.value;
+        const title = form.title.value;
+
+        // const genre = form.genre.value;
+        // setGenreValue(genre);
+
+        const time = form.time.value;
+
+        // const year = form.year.value;
+        // setYearValue(year);
+
+        const rating = form.rating.value;
+        const summery = form.summery.value;
+
+        console.log(poster, title, genreValue, time, yearValue, rating, summery);
     }
     return (
         <div className="w-11/12 mx-auto">
@@ -11,7 +43,7 @@ const AddMovies = () => {
             <div className="py-16 px-40 rounded-xl">
                 <h3 className="font-bold text-center text-gray-900 text-2xl my-5">Add New Movie</h3>
 
-                <form>
+                <form onSubmit={handleAddMovie}>
 
                     {/* first coumn */}
                     <div className="md: flex gap-3">
@@ -29,16 +61,6 @@ const AddMovies = () => {
                         </div>
                     </div>
 
-                    {/* second-test */}
-                    {/* <div>
-                        <label htmlFor="options">Choose an option:</label>
-                        <select id="options">
-                            <option value="">Select...</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                        </select>
-                    </div> */}
 
                     {/* second row */}
                     <div className="md: flex gap-3">
@@ -46,13 +68,12 @@ const AddMovies = () => {
                             <label htmlFor="options" className="label">
                                 <span className="label-text">Genre:</span>
                             </label>
-                            <select id="options" name='genre' className="input input-bordered" required>
-                                <option value="">Select...</option>
-                                <option value="drama">Drama</option>
-                                <option value="classic">Classic</option>
-                                <option value="thriller">Thriller</option>
-                                <option value="comedy">Comedy</option>
-                                <option value="action">Action</option>
+                            <select onChange={handleGenreChange} id="options" name='genre' className="input input-bordered" required>
+                                <option label="drama" value="drama">Drama</option>
+                                <option label="classic" value="classic">Classic</option>
+                                <option label="thriller" value="thriller">Thriller</option>
+                                <option label="comedy" value="comedy">Comedy</option>
+                                <option label="action" value="action">Action</option>
                             </select>
 
                         </div>
@@ -64,15 +85,6 @@ const AddMovies = () => {
                         </div>
                     </div>
 
-                    {/* third test */}
-
-                    {/* <select id="year" >
-                        {years.map((yr) => (
-                            <option key={yr} value={yr}>
-                                {yr}
-                            </option>
-                        ))}
-                    </select> */}
 
                     {/* third row */}
 
@@ -81,20 +93,19 @@ const AddMovies = () => {
                             <label className="label">
                                 <span className="label-text">Realising Year</span>
                             </label>
-                            <select id="year" name="year" className="input input-bordered" required>
+                            <select id="year" onChange={handleYearChange} name="year" className="input input-bordered" required>
                                 {years.map((yr) => (
                                     <option key={yr} value={yr}>
                                         {yr}
                                     </option>
                                 ))}
                             </select>
-                            {/* <input type="text" name='category' placeholder="enter coffee category" className="input input-bordered" required /> */}
                         </div>
                         <div className="form-control w-1/2">
                             <label className="label">
                                 <span className="label-text">Rating</span>
                             </label>
-                            <input type="number" name='rating' placeholder="enter movie ratings" className="input input-bordered" required />
+                            <input type="number" name='rating' step='0.1' min='0' max='5' placeholder="enter movie ratings" className="input input-bordered" required />
                         </div>
                     </div>
                     <div className="form-control">
