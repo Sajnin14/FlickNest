@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "../provider/AuthProvider";
+import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 
 const AddMovies = () => {
 
+    const navigate = useNavigate();
+
+    const {user} = useContext(AuthContext);
+    
+    const userEmail = user.email;
+    console.log(userEmail);
+
     const [genreValue, setGenreValue] = useState(null);
     const [yearValue, setYearValue] = useState('');
-    // const [error, setError] = useState(false);
+    
 
     const years = [];
     for (let i = 1990; i <= 2024; i++) {
@@ -53,8 +63,8 @@ const AddMovies = () => {
         }
 
         else {
-            const moviesValue = { poster, title, genreValue, time, yearValue, rating, summery }
-            
+            const moviesValue = { poster, title, genreValue, time, yearValue, rating, summery, userEmail }
+
             fetch(`http://localhost:5000/allmovies`, {
                 method: 'POST',
                 headers: {
@@ -65,6 +75,13 @@ const AddMovies = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
+                    Swal.fire({
+                        icon: "success",
+                        title: "Movie information has been saved",
+                        confirmButtonText: 'Cool',
+                      });
+                    navigate('/');
+                    
                 })
         }
 

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../firbase/firebase.config";
 import { toast } from "react-toastify";
+import { Navigate } from "react-router-dom";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -29,7 +30,6 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, updatedData)
     }
 
-    console.log(user);
 
     const googleSign = () => {
         const signInWithGoogle = signInWithPopup(auth, googleProvider)
@@ -49,6 +49,7 @@ const AuthProvider = ({ children }) => {
     
     const logOut = () =>{
         setLoader(true);
+        <Navigate to='/'></Navigate>
         return signOut(auth);
     }
 
