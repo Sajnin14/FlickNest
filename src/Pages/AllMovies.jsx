@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const AllMovies = () => {
+    const {user} = useContext(AuthContext);
     const loader = useLoaderData();
 
     return (
@@ -23,9 +26,15 @@ const AllMovies = () => {
                                 <p>Genre: {loadMovie.genreValue}</p>
                                 <p>Duration: {loadMovie.time} minutes</p>
                                 <p>Releasing Year: {loadMovie.yearValue}</p>
+
+                                 
                                 
                                 <div className="card-actions">
-                                    <Link><button className="btn bg-[#b91c1c] text-primary-content">See Details</button></Link>
+                                    {
+                                        user && user?.email ? <Link to={`${loadMovie._id}`}><button className="btn bg-[#b91c1c] text-primary-content">See Details</button></Link> : 
+                                        <Link to='/auth/login'><button className="btn bg-[#b91c1c] text-primary-content">See Details</button></Link>
+                                    }
+                                    
                                 </div>
                             </div>
                         </div>

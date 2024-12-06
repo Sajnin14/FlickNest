@@ -3,19 +3,29 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
+import { Rating } from "react-simple-star-rating";
 
 const AddMovies = () => {
 
     const navigate = useNavigate();
 
-    const {user} = useContext(AuthContext);
-    
+    const { user } = useContext(AuthContext);
+
+    const [rating, setRating] = useState(0);
+    const handleRating = (rate) => {
+        setRating(rate)
+    }
+
+    const onPointerMove = (value, index) => console.log(value, index)
+
+
+
     const userEmail = user.email;
     console.log(userEmail);
 
     const [genreValue, setGenreValue] = useState(null);
     const [yearValue, setYearValue] = useState('');
-    
+
 
     const years = [];
     for (let i = 1990; i <= 2024; i++) {
@@ -31,26 +41,30 @@ const AddMovies = () => {
     }
 
 
+
+
     const handleAddMovie = e => {
         e.preventDefault();
         const form = e.target;
         const poster = form.poster.value;
         const title = form.title.value;
         const time = form.time.value;
-        const rating = form.rating.value;
+        // const rated = form.rating.value;
+        const rated = parseFloat(form.rating.value);
         const summery = form.summery.value;
 
-        console.log(poster, title, genreValue, time, yearValue, rating, summery);
+
+        console.log(poster, title, genreValue, time, yearValue, summery, rating);
 
         if (title.length < 2) {
-            toast.error('movie title should be at least 2 character',{
+            toast.error('movie title should be at least 2 character', {
                 position: 'top-center'
             });
             return;
         }
         else if (time <= 60) {
             toast.error('duration have to minimum 60 minute', {
-            position: 'top-center'
+                position: 'top-center'
             })
             return;
         }
@@ -63,7 +77,7 @@ const AddMovies = () => {
         }
 
         else {
-            const moviesValue = { poster, title, genreValue, time, yearValue, rating, summery, userEmail }
+            const moviesValue = { poster, title, genreValue, time, yearValue, rating: rated, summery, userEmail }
 
             fetch(`http://localhost:5000/allmovies`, {
                 method: 'POST',
@@ -79,9 +93,9 @@ const AddMovies = () => {
                         icon: "success",
                         title: "Movie information has been saved",
                         confirmButtonText: 'Cool',
-                      });
+                    });
                     navigate('/');
-                    
+
                 })
         }
 
@@ -111,7 +125,6 @@ const AddMovies = () => {
                             <input type="text" name='title' placeholder="enter movie title" className="input input-bordered" required />
                         </div>
                     </div>
-
 
                     {/* second row */}
                     <div className="md: flex gap-3">
@@ -156,7 +169,8 @@ const AddMovies = () => {
                             <label className="label">
                                 <span className="label-text">Rating</span>
                             </label>
-                            <input type="number" name='rating' step='0.1' min='0' max='5' placeholder="enter movie ratings" className="input input-bordered" required />
+                            <input type="number" name='rating' step='0.1' min='0' max='5' placeholder="enter movie ratings"
+                                className="input input-bordered" required />
                         </div>
                     </div>
                     <div className="form-control">
@@ -167,11 +181,30 @@ const AddMovies = () => {
 
                     </div>
 
+
+                    {/* try it here */}
+                    <div className="flex">
+                        <Rating
+                            initialValue={rating}
+                            onClick={handleRating}
+                            onPointerMove={onPointerMove}
+                            style={{ display: "flex", flexDirection: "row" }
+                        }
+
+                        /* Available Props */
+                        />
+                    </div>
+
+
                     <div className="form-control">
                         <input type="submit" value="Add Movie" className="input input-bordered my-7 text-primary-content bg-red-800" />
                     </div>
+
+
+
                 </form>
             </div>
+
         </div>
     );
 };
