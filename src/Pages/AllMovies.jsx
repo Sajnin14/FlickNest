@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
@@ -6,7 +6,8 @@ import { AuthContext } from "../provider/AuthProvider";
 const AllMovies = () => {
     const {user} = useContext(AuthContext);
     const loader = useLoaderData();
-
+    // const [update, setUpdate] = useState(loader);
+    
     return (
         <div className="w-11/12 mx-auto">
             <h3 className="font-bold text-2xl text-gray-900 my-2 text-center">All Movies: {loader.length}</h3>
@@ -31,7 +32,7 @@ const AllMovies = () => {
                                 
                                 <div className="card-actions">
                                     {
-                                        user && user?.email ? <Link to={`${loadMovie._id}`}><button className="btn bg-[#b91c1c] text-primary-content">See Details</button></Link> : 
+                                        user && user?.email ? <Link to={`/details/${loadMovie._id}` }><button className="btn bg-[#b91c1c] text-primary-content">See Details</button></Link> : 
                                         <Link to='/auth/login'><button className="btn bg-[#b91c1c] text-primary-content">See Details</button></Link>
                                     }
                                     

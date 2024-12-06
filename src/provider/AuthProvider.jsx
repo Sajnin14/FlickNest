@@ -14,6 +14,7 @@ const AuthProvider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
     const [user, setUser] = useState('');
     const [loader, setLoader] = useState(true);
+    const [updateAfterDelete, setUpdateAfterDelete] = useState('');
 
     const createUser = (email, password) => {
         setLoader(true);
@@ -75,6 +76,8 @@ const AuthProvider = ({ children }) => {
         googleSign,
         logOut,
         updateUser,
+        updateAfterDelete, 
+        setUpdateAfterDelete
 
     }
     return (
