@@ -11,7 +11,9 @@ const Navbar = () => {
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/allmovies'>All Movies</NavLink>
         {
-            user?.email && <NavLink to='/addmovies'>Add Movies</NavLink>
+            user?.email && <div className="flex gap-3 items-center"><NavLink to='/addmovies'>Add Movies</NavLink>
+            <NavLink to='/favorites'>My Favorites</NavLink>
+            </div>
         }
         
         <NavLink to='/celebrity'>Celebrity-Cronicles</NavLink>
@@ -69,7 +71,7 @@ const Navbar = () => {
                     {
                         user && user?.email ? <div className="flex items-center gap-2">
                             
-                            <button onClick={logOut} className="border border-gray-900 text-red-600 py-1 px-2 rounded-lg">log-out</button>
+                            <button onClick={() => logOut()} className="border border-gray-900 text-red-600 py-1 px-2 rounded-lg">log-out</button>
                         </div> : <div className="flex items-center gap-3">
                             <NavLink className='border border-red-700 py-1 px-2 rounded-lg' to='/auth/login'>Login</NavLink>
                             <NavLink className='border border-red-700 py-1 px-2 rounded-lg' to='/auth/register'>Register</NavLink>

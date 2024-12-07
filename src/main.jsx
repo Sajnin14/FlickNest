@@ -16,6 +16,8 @@ import AuthProvider from './provider/AuthProvider';
 import PrivateRoute from './provider/PrivateRoute';
 import AddMovies from './Pages/AddMovies';
 import Details from './Pages/Details';
+import Favorites from './Pages/Favorites';
+import "./App.css"
 
 
 const router = createBrowserRouter([
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
         path: '/details/:id',
         element: <PrivateRoute><Details></Details></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/allmovies/${params.id}`)
+      },
+      {
+        path: '/favorites',
+        element: <PrivateRoute><Favorites></Favorites></PrivateRoute>
       },
       {
         path: '/celebrity',

@@ -5,7 +5,7 @@ import app from "../firbase/firebase.config";
 import { toast } from "react-toastify";
 import { Navigate } from "react-router-dom";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext({});
 const auth = getAuth(app);
 
 
@@ -57,12 +57,12 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const userStable = onAuthStateChanged(auth, (currentUser) => {
-            if (currentUser) {
+             
                 setUser(currentUser);
                 setLoader(false);
-            }
+            
             return () => {
-                userStable();
+                return userStable();
             }
         })
     }, [])

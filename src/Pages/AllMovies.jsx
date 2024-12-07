@@ -27,7 +27,7 @@ const AllMovies = () => {
                                 <p>Genre: {loadMovie.genreValue}</p>
                                 <p>Duration: {loadMovie.time} minutes</p>
                                 <p>Releasing Year: {loadMovie.yearValue}</p>
-
+                                <p>Rating: {loadMovie.rating}</p>
                                  
                                 
                                 <div className="card-actions">

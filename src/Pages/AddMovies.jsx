@@ -50,11 +50,11 @@ const AddMovies = () => {
         const title = form.title.value;
         const time = form.time.value;
         // const rated = form.rating.value;
-        const rated = parseFloat(form.rating.value);
+        // const rated = parseFloat(form.rating.value);
         const summery = form.summery.value;
 
 
-        console.log(poster, title, genreValue, time, yearValue, summery, rating);
+        console.log(poster, title, genreValue, time, yearValue, rating, summery);
 
         if (title.length < 2) {
             toast.error('movie title should be at least 2 character', {
@@ -62,8 +62,17 @@ const AddMovies = () => {
             });
             return;
         }
-        else if (time <= 60) {
-            toast.error('duration have to minimum 60 minute', {
+        
+        
+        else if (!yearValue) {
+            toast.error('select year, please', {
+                position: 'top-center'
+            })
+            return;
+        }
+
+        else if (!rating) {
+            toast.error('submit rating, please', {
                 position: 'top-center'
             })
             return;
@@ -77,7 +86,7 @@ const AddMovies = () => {
         }
 
         else {
-            const moviesValue = { poster, title, genreValue, time, yearValue, rating: rated, summery, userEmail }
+            const moviesValue = { poster, title, genreValue, time, yearValue, rating, summery, userEmail }
 
             fetch(`http://localhost:5000/allmovies`, {
                 method: 'POST',
@@ -133,6 +142,7 @@ const AddMovies = () => {
                                 <span className="label-text">Genre:</span>
                             </label>
                             <select onChange={handleGenreChange} id="options" name='genre' className="input input-bordered" required>
+                                <option label="" value="">Select One</option>
                                 <option label="drama" value="drama">Drama</option>
                                 <option label="classic" value="classic">Classic</option>
                                 <option label="thriller" value="thriller">Thriller</option>
@@ -158,6 +168,7 @@ const AddMovies = () => {
                                 <span className="label-text">Realising Year</span>
                             </label>
                             <select id="year" onChange={handleYearChange} name="year" className="input input-bordered" required>
+                                <option label="" value="">Select Year</option>
                                 {years.map((yr) => (
                                     <option key={yr} value={yr}>
                                         {yr}
@@ -169,8 +180,20 @@ const AddMovies = () => {
                             <label className="label">
                                 <span className="label-text">Rating</span>
                             </label>
-                            <input type="number" name='rating' step='0.1' min='0' max='5' placeholder="enter movie ratings"
-                                className="input input-bordered" required />
+                            <div className="inline-flex">
+                                <Rating
+                                    initialValue={rating}
+                                    onClick={handleRating}
+                                    onPointerMove={onPointerMove}
+                                    style={{ display: "inline-flex" }
+                                    }
+
+                                /* Available Props */
+                                />
+                            </div>
+
+                            {/* <input type="number" name='rating' step='0.1' min='0' max='5' placeholder="enter movie ratings"
+                                className="input input-bordered" required /> */}
                         </div>
                     </div>
                     <div className="form-control">
@@ -183,17 +206,7 @@ const AddMovies = () => {
 
 
                     {/* try it here */}
-                    <div className="flex">
-                        <Rating
-                            initialValue={rating}
-                            onClick={handleRating}
-                            onPointerMove={onPointerMove}
-                            style={{ display: "flex", flexDirection: "row" }
-                        }
 
-                        /* Available Props */
-                        />
-                    </div>
 
 
                     <div className="form-control">

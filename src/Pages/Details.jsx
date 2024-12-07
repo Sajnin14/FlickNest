@@ -1,10 +1,14 @@
 
-import { Link, useLoaderData } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const Details = () => {
-    
+    const {user} = useContext(AuthContext);
+    const userEmail = (user.email);
+    const navigate = useNavigate();
     const loaderData = useLoaderData();
     
     const handleDelete = () => {
@@ -29,7 +33,7 @@ const Details = () => {
                         text: "Your file has been deleted.",
                         icon: "success"
                       });
-
+                    navigate('/allmovies');
                 })
 
               
@@ -38,14 +42,14 @@ const Details = () => {
         
     }
 
-
+    const newUserFav = {...loaderData, userEmail}
     const handleFavourite = () => {
         fetch('http://localhost:5000/favorites', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(loaderData)
+            body: JSON.stringify(newUserFav)
         })
         .then(res => res.json())
         .then(() => {
@@ -54,6 +58,7 @@ const Details = () => {
                 title: "added to favourite list",
                 confirmButtonText: 'Cool',
             });
+            
         })
     }
 
@@ -78,8 +83,8 @@ const Details = () => {
                                  
                                 
                                 <div className="card-actions my-5">
-                                    
-                                        <Link to='/allmovies'><button onClick={handleDelete} className="btn bg-[#b91c1c] text-primary-content">Delete</button></Link>
+                                {/* to='/allmovies' */}
+                                        <Link ><button onClick={handleDelete} className="btn bg-[#b91c1c] text-primary-content">Delete</button></Link>
                                         <Link><button onClick={handleFavourite} className="btn bg-[#b91c1c] text-primary-content">Add To Favourite</button></Link> 
                                     
                                 </div>
