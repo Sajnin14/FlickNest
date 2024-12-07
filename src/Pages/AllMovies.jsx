@@ -7,6 +7,7 @@ const AllMovies = () => {
     const {user} = useContext(AuthContext);
     const loader = useLoaderData();
     // const [update, setUpdate] = useState(loader);
+
     
     return (
         <div className="w-11/12 mx-auto">
