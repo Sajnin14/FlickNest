@@ -5,7 +5,7 @@
       "age": 44,
       "number_of_movies": 150,
       "most_popular_works": ["Shikari", "Nabab", "Password"],
-      "marital_status": "Married",
+      "marital_status": "Single",
       "image_url": "https://i.ibb.co.com/Zd5v9KM/images-2.jpg"
     },
     {
@@ -51,7 +51,7 @@
       "age": 30,
       "number_of_movies": 30,
       "most_popular_works": ["Swapnajaal", "Antar Jala", "Biswasundari"],
-      "marital_status": "Married",
+      "marital_status": "Divorced",
       "image_url": "https://i.ibb.co.com/kGNgnn3/misha-7.png"
     },
     {

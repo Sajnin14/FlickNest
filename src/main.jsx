@@ -18,11 +18,13 @@ import AddMovies from './Pages/AddMovies';
 import Details from './Pages/Details';
 import Favorites from './Pages/Favorites';
 import "./App.css"
+import Error from './Error';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <Error></Error>,
     element: <MainPage></MainPage>,
     children: [
       {
