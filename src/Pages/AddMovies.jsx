@@ -185,6 +185,7 @@ const AddMovies = () => {
                                     initialValue={rating}
                                     onClick={handleRating}
                                     onPointerMove={onPointerMove}
+                                    
                                     style={{ display: "inline-flex" }
                                     }
 

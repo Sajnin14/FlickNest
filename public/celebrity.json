@@ -1,0 +1,96 @@
+[
+    {
+        "id": 1,
+      "name": "Shakib Khan",
+      "age": 44,
+      "number_of_movies": 150,
+      "most_popular_works": ["Shikari", "Nabab", "Password"],
+      "marital_status": "Married",
+      "image_url": "https://i.ibb.co.com/Zd5v9KM/images-2.jpg"
+    },
+    {
+        "id": 2,
+      "name": "Jaya Ahsan",
+      "age": 49,
+      "number_of_movies": 50,
+      "most_popular_works": ["Debi", "Bishorjon", "Robibaar"],
+      "marital_status": "Single",
+      "image_url": "https://i.ibb.co.com/QnYgBYV/images-3.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Mosharraf Karim",
+        "age": 51,
+        "number_of_movies": 20,
+        "most_popular_works": ["Television", "Third Person Singular Number", "Komola Rocket"],
+        "marital_status": "Married",
+        "image_url": "https://i.ibb.co.com/TgPdrP0/images-4.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Chanchal Chowdhury",
+        "age": 48,
+        "number_of_movies": 25,
+        "most_popular_works": ["Monpura", "Aynabaji", "Hawa"],
+        "marital_status": "Married",
+        "image_url": "https://i.ibb.co.com/sWqKjZx/chanchal-chowdhury.jpg"
+      },
+    {
+        "id": 5,
+      "name": "Apu Biswas",
+      "age": 34,
+      "number_of_movies": 80,
+      "most_popular_works": ["Koti Takar Kabin", "My Name Is Khan", "Rajneeti"],
+      "marital_status": "Single",
+      "image_url": "https://i.ibb.co.com/8XQLMdL/Untitled-8-2401100449.jpg"
+    },
+    
+    {
+        "id": 6,
+      "name": "Pori Moni",
+      "age": 30,
+      "number_of_movies": 30,
+      "most_popular_works": ["Swapnajaal", "Antar Jala", "Biswasundari"],
+      "marital_status": "Married",
+      "image_url": "https://i.ibb.co.com/kGNgnn3/misha-7.png"
+    },
+    {
+        "id": 7,
+      "name": "Nusrat Imrose Tisha",
+      "age": 39,
+      "number_of_movies": 40,
+      "most_popular_works": ["Third Person Singular Number", "Television", "Saturday Afternoon"],
+      "marital_status": "Married",
+      "image_url": "https://i.ibb.co.com/xGLZ65H/images-5.jpg"
+    },
+
+    
+    {
+        "id": 8,
+      "name": "Tahsan Khan",
+      "age": 43,
+      "number_of_movies": 15,
+      "most_popular_works": ["Jodi Ekdin", "Anuprobesh", "Haldaa"],
+      "marital_status": "Divorced",
+      "image_url": "https://i.ibb.co.com/4Pv0Vk5/tahsan-rahman-khan-da1b58cfca5d15d371a8a8a27711b830.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Afran Nisho",
+        "age": 41,
+        "number_of_movies": 1,
+        "most_popular_works": ["Shurongo"],
+        "marital_status": "Married",
+        "image_url": "https://i.ibb.co.com/v3Kf6LB/images-6.jpg"
+      },
+    {
+        "id": 10,
+      "name": "Arifin Shuvoo",
+      "age": 41,
+      "number_of_movies": 40,
+      "most_popular_works": ["Dhaka Attack", "Mission Extreme", "Chuye Dile Mon"],
+      "marital_status": "Married",
+      "image_url": "https://i.ibb.co.com/TPd5BGd/arifin-shuvoo-2.jpg"
+    }
+  ]
+  

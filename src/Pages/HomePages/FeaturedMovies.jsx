@@ -17,7 +17,7 @@ const FeaturedMovies = () => {
     const topRatedMovies = movies.sort((a, b) => b.rating - a.rating).slice(0, 6);
 
     return (
-        <div className="w-11/12 mx-auto text-center">
+        <div className="text-center">
             <h3 className="font-bold text-2xl text-gray-900 my-2 text-center">Featured <span className="text-red-700">Movies</span></h3>
             <p className='italic text-center'>A cozy hub for all your favourite films</p>
 
