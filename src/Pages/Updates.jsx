@@ -18,12 +18,6 @@ const Updates = () => {
         setRating(rate)
     }
 
-    // const onPointerMove = (value, index) => {
-    //     console.log(value, index);
-    // }
-
-
-
     const userEmail = user.email;
 
     const [genreValue, setGenreValue] = useState(null);

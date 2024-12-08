@@ -9,7 +9,7 @@ const Navbar = () => {
     
 
 
-    const links = <div className="flex flex-col md:flex-row gap-3 items-center font-semibold">
+    const links = <div className="flex flex-col lg:flex-row gap-3 items-center font-semibold">
         <NavLink to='/'>Home</NavLink>
         <NavLink to='/allmovies'>All Movies</NavLink>
         {

@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 
 const AllMovies = () => {
@@ -8,22 +9,41 @@ const AllMovies = () => {
     const loaderData = useLoaderData();
     const [allMovies, setAllMovies] = useState(loaderData);
     const [search, setSearch] = useState('');
-    // console.log(search);
+    const [debouncedSearch, setDebouncedSearch] = useState(search);
 
     useEffect(() => {
-        fetch(`https://movie-server-gold.vercel.app/allmovies?searchParams=${search.title}`)
-        .then(res => res.json())
-        .then(data => {
-            setAllMovies(data);
-        })
-    },[search])
+        const debounceTimeout = setTimeout(() => {
+          setDebouncedSearch(search);
+        }, 500); // Adjust delay as needed
+        return () => clearTimeout(debounceTimeout);
+      }, [search]);
+
+      useEffect(() => {
+        const fetchMovies = async () => {
+            try {
+                const response = await fetch(
+                    `https://movie-server-gold.vercel.app/allmovies?searchParams=${debouncedSearch}`
+                );
+                if (!response.ok) {
+                    throw new Error("Failed to fetch movies");
+                }
+                const data = await response.json();
+                setAllMovies(data);
+            } catch (error) {
+                 toast.error(error, {position: 'top-center'});
+            }
+        };
+    
+        fetchMovies();
+    }, [debouncedSearch]);
+    
 
     return (
         <div className="w-11/12 mx-auto">
             <h3 className="font-bold text-2xl my-2 text-center">All Movies: {allMovies.length}</h3>
             <div className="w-3/4 mx-auto my-7">
                 <label className="input input-bordered flex items-center gap-2">
-                    <input type="text" onChange={(e) => setSearch(e.target.value)} className="grow" placeholder="Search" />
+                    <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} className="grow" placeholder="Search" />
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 16 16"
