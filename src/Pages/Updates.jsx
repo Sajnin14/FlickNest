@@ -18,9 +18,9 @@ const Updates = () => {
         setRating(rate)
     }
 
-    const onPointerMove = (value, index) => {
-        alert(value, index);
-    }
+    // const onPointerMove = (value, index) => {
+    //     console.log(value, index);
+    // }
 
 
 
@@ -195,7 +195,7 @@ const Updates = () => {
                                 <Rating
                                     initialValue={rating}
                                     onClick={handleRating}
-                                    onPointerMove={onPointerMove}        
+                                    // onPointerMove={onPointerMove}        
                                     style={{ display: "inline-flex" }
                                     }
 
