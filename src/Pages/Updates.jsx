@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 
-const AddMovies = () => {
+const Updates = () => {
 
     const navigate = useNavigate();
 
@@ -88,24 +88,24 @@ const AddMovies = () => {
         else {
             const moviesValue = { poster, title, genreValue, time, yearValue, rating, summery, userEmail }
 
-            fetch(`http://localhost:5000/allmovies`, {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(moviesValue)
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    Swal.fire({
-                        icon: "success",
-                        title: "Movie information has been saved",
-                        confirmButtonText: 'Cool',
-                    });
-                    navigate('/');
+            // fetch(`http://localhost:5000/allmovies`, {
+            //     method: 'POST',
+            //     headers: {
+            //         'content-type': 'application/json'
+            //     },
+            //     body: JSON.stringify(moviesValue)
+            // })
+            //     .then(res => res.json())
+            //     .then(data => {
+            //         console.log(data);
+            //         Swal.fire({
+            //             icon: "success",
+            //             title: "Movie information has been saved",
+            //             confirmButtonText: 'Cool',
+            //         });
+            //         navigate('/');
 
-                })
+                // })
         }
 
     }
@@ -115,7 +115,7 @@ const AddMovies = () => {
         <div className="w-11/12 mx-auto">
 
             <div className="py-16 px-40 rounded-xl">
-                <h3 className="font-bold text-center text-2xl my-5">Add New Movie</h3>
+                <h3 className="font-bold text-center text-2xl my-5">Update Movie</h3>
 
                 <form onSubmit={handleAddMovie}>
 
@@ -211,7 +211,7 @@ const AddMovies = () => {
 
 
                     <div className="form-control">
-                        <input type="submit" value="Add Movie" className="input input-bordered my-7 text-primary-content bg-red-800" />
+                        <input type="submit" value="Update Movie" className="input input-bordered my-7 text-primary-content bg-red-800" />
                     </div>
 
 
@@ -223,4 +223,4 @@ const AddMovies = () => {
     );
 };
 
-export default AddMovies;
+export default Updates;

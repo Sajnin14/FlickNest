@@ -3,33 +3,32 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
+import { useForm } from "react-hook-form";
 
 
 const Login = () => {
-
-    const {signIn, setUser, googleSign} = useContext(AuthContext);
+    const { signIn, setUser, googleSign } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const handleLogin = e =>{
-        e.preventDefault();
-        const form = e.target;
-        const email = form.email.value;
-        const password = form.password.value;
 
+    const { register, handleSubmit } = useForm();
+    const onSubmit = data => {
+        const email = data.email;
+        const password = data.password;
+        console.log(email, password);
         signIn(email, password)
-        .then(res => {
-            setUser(res.user);
-            navigate('/');
-        })
-        .catch(err => {
-            toast.error(<p>{err.message}</p>, {
-                position: 'top-center'
+            .then(res => {
+                setUser(res.user);
+                navigate('/');
             })
-        })
+            .catch(err => {
+                toast.error(<p>{err.message}</p>, {
+                    position: 'top-center'
+                })
+            })
+    };
 
-    }
-
-    const handleGoogle = () =>{
+    const handleGoogle = () => {
         googleSign();
         navigate('/');
     }
@@ -38,27 +37,29 @@ const Login = () => {
             <div className="w-11/12 mx-auto p-12">
                 <h2 className="text-center text-2xl font-semibold">Login Your Account</h2>
                 <div className="card bg-base-100 mx-auto max-w-lg shrink-0 border my-5 p-3">
-                    <form onSubmit={handleLogin} className="card-body">
+                    
+                    {/* new form */}
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input name="email" type="email" placeholder="email" className="input input-bordered" required />
+                            <input type="email" {...register('email', { required: true })} placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input name="password" type="password" placeholder="password" className="input input-bordered" required />
+                            <input type="password" {...register('password', { required: true })} placeholder="password" className="input input-bordered" />
                             <label className="label">
 
                                 <Link className="label-text-alt link link-hover text-blue-600">Forgot password?</Link>
                             </label>
                         </div>
-                        <div className="form-control">
-                            <button className="btn bg-red-700 text-white">Login</button>
+                        <div className="form-control my-3">
+                            <input type="submit" className="btn bg-red-700 text-white" />
                         </div>
-                        
+
                     </form>
 
                     <p className="text-center text-sm">Do not have an account? <Link to='/auth/register' className="text-blue-700 underline font-semibold">Register</Link></p>

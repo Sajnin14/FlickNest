@@ -20,6 +20,7 @@ import Favorites from './Pages/Favorites';
 import "./App.css"
 import Error from './Error';
 import ThemeWrapper from './provider/ThemeWrapper';
+import Updates from './Pages/Updates';
 
 
 const router = createBrowserRouter([
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: '/celebrity',
         element: <Celebrity></Celebrity>
+      },
+      {
+        path: '/updates',
+        element: <PrivateRoute><Updates></Updates></PrivateRoute>
       },
       {
         path: '/auth/register',

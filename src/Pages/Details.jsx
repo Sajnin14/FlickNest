@@ -86,6 +86,8 @@ const Details = () => {
                                 {/* to='/allmovies' */}
                                         <Link ><button onClick={handleDelete} className="btn bg-[#b91c1c] text-primary-content">Delete</button></Link>
                                         <Link><button onClick={handleFavourite} className="btn bg-[#b91c1c] text-primary-content">Add To Favourite</button></Link> 
+                                        <Link to='/updates'><button className="btn bg-[#b91c1c] text-primary-content">Update Info</button></Link>
+
                                     
                                 </div>
                             </div>
