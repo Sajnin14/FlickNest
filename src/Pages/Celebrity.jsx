@@ -10,7 +10,7 @@ const Celebrity = () => {
     }, [])
     return (
         <div className="w-11/12 mx-auto my-10 text-center">
-            <h3 className="text-2xl font-bold text-gray-900">Know More About Celebrity </h3>
+            <h3 className="text-2xl font-bold">Know More About Celebrity </h3>
             <p>Where Every Star Has a Story.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 my-5">
                 {

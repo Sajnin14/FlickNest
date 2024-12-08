@@ -2,7 +2,7 @@ import { FaCheck } from "react-icons/fa";
 const PricingPlans = () => {
     return (
         <div>
-            <h3 className="font-bold text-2xl text-gray-900 my-2 text-center">Our <span className="text-red-700">Plans</span></h3>
+            <h3 className="font-bold text-2xl my-2 text-center">Our <span className="text-red-700">Plans</span></h3>
             <p className='italic text-center'>Pay for What You Need, Enjoy What You Love.</p>
 
             <div className="my-10 grid grid-cols-1 lg:grid-cols-3 gap-5">

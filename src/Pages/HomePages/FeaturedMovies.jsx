@@ -18,7 +18,7 @@ const FeaturedMovies = () => {
 
     return (
         <div className="text-center">
-            <h3 className="font-bold text-2xl text-gray-900 my-2 text-center">Featured <span className="text-red-700">Movies</span></h3>
+            <h3 className="font-bold text-2xl my-2 text-center">Featured <span className="text-red-700">Movies</span></h3>
             <p className='italic text-center'>A cozy hub for all your favourite films</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -52,7 +52,7 @@ const FeaturedMovies = () => {
                 }
             </div>
 
-            <Link to='/allmovies'><button className="btn bg-gray-900 text-primary-content mt-20 mb-10">See All Movies</button></Link>
+            <Link to='/allmovies'><button className="btn bg-gray-900 text-white mt-20 mb-10">See All Movies</button></Link>
 
         </div>
     );

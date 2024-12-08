@@ -76,7 +76,7 @@ const Favorites = () => {
                                  
                                 
                                 <div className="card-actions">
-                                    <Link><button onClick={() => handleDeleteFav(upFav._id)} className="btn bg-[#b91c1c] text-primary-content">Delete Favourite</button></Link> 
+                                    <Link><button onClick={() => handleDeleteFav(upFav._id)} className="btn bg-[#b91c1c] text-white">Delete Favourite</button></Link> 
                                     
                                 </div>
                             </div>

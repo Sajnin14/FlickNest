@@ -7,14 +7,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const MainPage = () => {
     return (
-        <div>
-           <Navbar></Navbar>
-           <Outlet></Outlet>
-           <Footer></Footer>
+        
+                <div>
+                    <Navbar></Navbar>
+                    <Outlet></Outlet>
+                    <Footer></Footer>
 
-           <ToastContainer></ToastContainer>
-        </div>
-
+                    <ToastContainer></ToastContainer>
+                </div>
     );
 };
 

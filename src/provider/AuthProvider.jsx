@@ -12,10 +12,32 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
 
     const googleProvider = new GoogleAuthProvider();
+    const [theme, setTheme] = useState('light');
+    const [themeActive, setThemeActive] = useState(true);
+    
     const [user, setUser] = useState('');
     const [loader, setLoader] = useState(true);
     const [updateAfterDelete, setUpdateAfterDelete] = useState('');
 
+    
+    // code for theme changing
+    useEffect(() => {
+        setLoader(true);
+        const storedTheme = localStorage.getItem("theme") || 'light';
+        setTheme(storedTheme);
+    },[])
+
+    const changeTheme = (theme) => {
+        setTheme(theme);
+        localStorage.setItem("theme", theme);
+        if(theme == 'light'){
+            setThemeActive(true);
+        }
+        else{
+            setThemeActive(!true);
+        }
+
+    }
     const createUser = (email, password) => {
         setLoader(true);
         return createUserWithEmailAndPassword(auth, email, password)
@@ -77,7 +99,10 @@ const AuthProvider = ({ children }) => {
         logOut,
         updateUser,
         updateAfterDelete, 
-        setUpdateAfterDelete
+        setUpdateAfterDelete,
+        theme,
+        changeTheme,
+        themeActive
 
     }
     return (

@@ -3,7 +3,7 @@
 const Footer = () => {
     return (
         <div>
-            <footer className="footer footer-center bg-gray-900 text-primary-content p-10 mt-10">
+            <footer className="footer footer-center bg-gray-900 p-10 mt-10 text-gray-300">
                 <aside>
                     <p className="font-bold text-3xl text-red-600">
                         FlickNest

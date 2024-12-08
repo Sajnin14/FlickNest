@@ -115,7 +115,7 @@ const AddMovies = () => {
         <div className="w-11/12 mx-auto">
 
             <div className="py-16 px-40 rounded-xl">
-                <h3 className="font-bold text-center text-gray-900 text-2xl my-5">Add New Movie</h3>
+                <h3 className="font-bold text-center text-2xl my-5">Add New Movie</h3>
 
                 <form onSubmit={handleAddMovie}>
 

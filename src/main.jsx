@@ -19,6 +19,7 @@ import Details from './Pages/Details';
 import Favorites from './Pages/Favorites';
 import "./App.css"
 import Error from './Error';
+import ThemeWrapper from './provider/ThemeWrapper';
 
 
 const router = createBrowserRouter([
@@ -32,8 +33,8 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
-         path: '/addmovies',
-         element: <PrivateRoute><AddMovies></AddMovies></PrivateRoute>
+        path: '/addmovies',
+        element: <PrivateRoute><AddMovies></AddMovies></PrivateRoute>
       },
       {
         path: '/allmovies',
@@ -43,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: '/details/:id',
         element: <PrivateRoute><Details></Details></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/allmovies/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/allmovies/${params.id}`)
       },
       {
         path: '/favorites',
@@ -61,12 +62,16 @@ const router = createBrowserRouter([
         path: '/auth/login',
         element: <Login></Login>
       }
-      
+
     ]
   },
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider> <RouterProvider router={router} /></AuthProvider>
+    <AuthProvider>
+      <ThemeWrapper>
+        <RouterProvider router={router} />
+      </ThemeWrapper>
+    </AuthProvider>
   </StrictMode>,
 )

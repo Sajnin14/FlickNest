@@ -12,7 +12,7 @@ const CelebritySection = () => {
     const agedCeleb = celebrity.sort((a, b) => b.age - a.age).slice(0, 3);
     return (
         <div className="text-center">
-            <h3 className="font-bold text-2xl text-gray-900 my-2 text-center">Celebrity <span className="text-red-700">Chronicle</span></h3>
+            <h3 className="font-bold text-2xl my-2 text-center">Celebrity <span className="text-red-700">Chronicle</span></h3>
             <p className='italic text-center'>Where Every Star Has a Story.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 my-5">
