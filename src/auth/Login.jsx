@@ -18,6 +18,9 @@ const Login = () => {
         signIn(email, password)
             .then(res => {
                 setUser(res.user);
+                toast.success(<p>successfully login!</p>, {
+                    position: 'top-center'
+                })
                 navigate('/');
             })
             .catch(err => {
