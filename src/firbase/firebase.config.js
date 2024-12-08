@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAB9CDhdUuhMxfFlMeWpv8-2qV8uK1a5Go",
-  authDomain: "movie-flicknest.firebaseapp.com",
-  projectId: "movie-flicknest",
-  storageBucket: "movie-flicknest.firebasestorage.app",
-  messagingSenderId: "332211613380",
-  appId: "1:332211613380:web:f89a0e1a98acca366c6391"
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.messagingSenderId,
+  appId: import.meta.env.VITE_appId
 };
 
 // Initialize Firebase

@@ -189,12 +189,9 @@ const AddMovies = () => {
                                     style={{ display: "inline-flex" }
                                     }
 
-                                /* Available Props */
+                            
                                 />
                             </div>
-
-                            {/* <input type="number" name='rating' step='0.1' min='0' max='5' placeholder="enter movie ratings"
-                                className="input input-bordered" required /> */}
                         </div>
                     </div>
                     <div className="form-control">
@@ -204,11 +201,6 @@ const AddMovies = () => {
                         <textarea name="summery" className="input input-bordered" required></textarea>
 
                     </div>
-
-
-                    {/* try it here */}
-
-
 
                     <div className="form-control">
                         <input type="submit" value="Add Movie" className="input input-bordered my-7 text-primary-content bg-red-800" />
