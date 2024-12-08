@@ -56,8 +56,9 @@ const router = createBrowserRouter([
         element: <Celebrity></Celebrity>
       },
       {
-        path: '/updates',
-        element: <PrivateRoute><Updates></Updates></PrivateRoute>
+        path: '/updates/:id',
+        element: <PrivateRoute><Updates></Updates></PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/allmovies/${params.id}`)
       },
       {
         path: '/auth/register',

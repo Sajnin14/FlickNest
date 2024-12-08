@@ -2,11 +2,14 @@ import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from 'sweetalert2';
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Rating } from "react-simple-star-rating";
 
 const Updates = () => {
 
+
+    const loader = useLoaderData();
+    console.log(loader);
     const navigate = useNavigate();
 
     const { user } = useContext(AuthContext);
@@ -88,24 +91,38 @@ const Updates = () => {
         else {
             const moviesValue = { poster, title, genreValue, time, yearValue, rating, summery, userEmail }
 
-            // fetch(`http://localhost:5000/allmovies`, {
-            //     method: 'POST',
-            //     headers: {
-            //         'content-type': 'application/json'
-            //     },
-            //     body: JSON.stringify(moviesValue)
-            // })
-            //     .then(res => res.json())
-            //     .then(data => {
-            //         console.log(data);
-            //         Swal.fire({
-            //             icon: "success",
-            //             title: "Movie information has been saved",
-            //             confirmButtonText: 'Cool',
-            //         });
-            //         navigate('/');
+            Swal.fire({
+                title: "Are you sure?",
+                text: "Data will be updated!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, update it!"
+              }).then((result) => {
+                if (result.isConfirmed) {
 
-                // })
+                    fetch(`http://localhost:5000/allmovies/${loader._id}`,{
+                        method: 'PUT',
+                        headers: {
+                            'content-type' : 'application/json'
+                        },
+                        body: JSON.stringify(moviesValue)
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        Swal.fire({
+                            title: "Updated!",
+                            text: "Your file has been updated.",
+                            icon: "success"
+                          });
+                          navigate('/');
+                    })
+                  
+                }
+              });
+
         }
 
     }
@@ -125,13 +142,13 @@ const Updates = () => {
                             <label className="label">
                                 <span className="label-text">Movie Poster</span>
                             </label>
-                            <input type="url" name='poster' placeholder="enter movie poster" className="input input-bordered" required />
+                            <input type="url" name='poster'  defaultValue={loader.poster} className="input input-bordered" required />
                         </div>
                         <div className="form-control w-1/2">
                             <label className="label">
                                 <span className="label-text">Movie Title</span>
                             </label>
-                            <input type="text" name='title' placeholder="enter movie title" className="input input-bordered" required />
+                            <input type="text" name='title' defaultValue={loader.title} className="input input-bordered" required />
                         </div>
                     </div>
 
@@ -142,7 +159,7 @@ const Updates = () => {
                                 <span className="label-text">Genre:</span>
                             </label>
                             <select onChange={handleGenreChange} id="options" name='genre' className="input input-bordered" required>
-                                <option label="" value="">Select One</option>
+                                <option label="" value=""> Select one </option>
                                 <option label="drama" value="drama">Drama</option>
                                 <option label="classic" value="classic">Classic</option>
                                 <option label="thriller" value="thriller">Thriller</option>
@@ -155,7 +172,7 @@ const Updates = () => {
                             <label className="label">
                                 <span className="label-text">Duration</span>
                             </label>
-                            <input type="number" name='time' placeholder="movie duration(min.)" className="input input-bordered" required />
+                            <input type="number" name='time' defaultValue={loader.time} className="input input-bordered" required />
                         </div>
                     </div>
 
@@ -168,7 +185,7 @@ const Updates = () => {
                                 <span className="label-text">Realising Year</span>
                             </label>
                             <select id="year" onChange={handleYearChange} name="year" className="input input-bordered" required>
-                                <option label="" value="">Select Year</option>
+                                <option label="" value="">select one</option>
                                 {years.map((yr) => (
                                     <option key={yr} value={yr}>
                                         {yr}
@@ -184,24 +201,20 @@ const Updates = () => {
                                 <Rating
                                     initialValue={rating}
                                     onClick={handleRating}
-                                    onPointerMove={onPointerMove}
-                                    
+                                    onPointerMove={onPointerMove}        
                                     style={{ display: "inline-flex" }
                                     }
 
                                 /* Available Props */
                                 />
                             </div>
-
-                            {/* <input type="number" name='rating' step='0.1' min='0' max='5' placeholder="enter movie ratings"
-                                className="input input-bordered" required /> */}
                         </div>
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Summery</span>
                         </label>
-                        <textarea name="summery" className="input input-bordered" required></textarea>
+                        <textarea name="summery" defaultValue={loader.summery} className="input input-bordered" required></textarea>
 
                     </div>
 
