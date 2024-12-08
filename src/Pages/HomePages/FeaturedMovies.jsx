@@ -7,7 +7,7 @@ const FeaturedMovies = () => {
     const { user } = useContext(AuthContext);
     const [movies, setMovies] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/allmovies')
+        fetch('https://movie-server-gold.vercel.app/allmovies')
             .then(res => res.json())
             .then(data => setMovies(data))
     }, [])

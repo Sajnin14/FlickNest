@@ -22,12 +22,12 @@ const Details = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/allmovies/${loaderData._id}`, {
+                fetch(`https://movie-server-gold.vercel.app/allmovies/${loaderData._id}`, {
                     method: 'DELETE'
                 })
                 .then(res => res.json())
-                .then(data => {
-                    console.log(data); 
+                .then(() => {
+                     
                     Swal.fire({
                         title: "Deleted!",
                         text: "Your file has been deleted.",
@@ -44,7 +44,7 @@ const Details = () => {
 
     const newUserFav = {...loaderData, userEmail}
     const handleFavourite = () => {
-        fetch('http://localhost:5000/favorites', {
+        fetch('https://movie-server-gold.vercel.app/favorites', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

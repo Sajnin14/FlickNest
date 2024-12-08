@@ -9,13 +9,12 @@ const Favorites = () => {
     const userEmail = user.email;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/favorites/email/${userEmail}`)
+        fetch(`https://movie-server-gold.vercel.app/favorites/email/${userEmail}`)
             .then(res => res.json())
             .then(data => setUpdateFav(data))
     }, [userEmail])
 
     const handleDeleteFav = (_id) => {
-        console.log(_id);
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -26,18 +25,16 @@ const Favorites = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/favorites/id/${_id}`,{
+                fetch(`https://movie-server-gold.vercel.app/favorites/id/${_id}`,{
                     method: 'DELETE',
                     headers: {
                         'content-type' : 'application/json'
                     }
                 })
                 .then(res => res.json())
-                .then(data => {
-                    console.log(data);
+                .then(() => {
                     const remaining = updateFav.filter(fav => fav._id !== _id);
                     setUpdateFav(remaining);
-                    console.log(remaining);
                     Swal.fire({
                         title: "Deleted!",
                         text: "Your file has been deleted.",

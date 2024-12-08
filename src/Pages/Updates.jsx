@@ -9,7 +9,6 @@ const Updates = () => {
 
 
     const loader = useLoaderData();
-    console.log(loader);
     const navigate = useNavigate();
 
     const { user } = useContext(AuthContext);
@@ -19,12 +18,13 @@ const Updates = () => {
         setRating(rate)
     }
 
-    const onPointerMove = (value, index) => console.log(value, index)
+    const onPointerMove = (value, index) => {
+        alert(value, index);
+    }
 
 
 
     const userEmail = user.email;
-    console.log(userEmail);
 
     const [genreValue, setGenreValue] = useState(null);
     const [yearValue, setYearValue] = useState('');
@@ -52,12 +52,7 @@ const Updates = () => {
         const poster = form.poster.value;
         const title = form.title.value;
         const time = form.time.value;
-        // const rated = form.rating.value;
-        // const rated = parseFloat(form.rating.value);
         const summery = form.summery.value;
-
-
-        console.log(poster, title, genreValue, time, yearValue, rating, summery);
 
         if (title.length < 2) {
             toast.error('movie title should be at least 2 character', {
@@ -102,7 +97,7 @@ const Updates = () => {
               }).then((result) => {
                 if (result.isConfirmed) {
 
-                    fetch(`http://localhost:5000/allmovies/${loader._id}`,{
+                    fetch(`https://movie-server-gold.vercel.app/allmovies/${loader._id}`,{
                         method: 'PUT',
                         headers: {
                             'content-type' : 'application/json'
@@ -110,8 +105,7 @@ const Updates = () => {
                         body: JSON.stringify(moviesValue)
                     })
                     .then(res => res.json())
-                    .then(data => {
-                        console.log(data)
+                    .then(() => {
                         Swal.fire({
                             title: "Updated!",
                             text: "Your file has been updated.",

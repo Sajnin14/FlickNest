@@ -18,7 +18,6 @@ const Registration = () => {
         const photo = form.get("photo");
         const email = form.get("email");
         const password = form.get("password");
-        console.log(name, email, photo, password);
 
         const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
 

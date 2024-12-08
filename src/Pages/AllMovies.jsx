@@ -11,7 +11,7 @@ const AllMovies = () => {
     // console.log(search);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/allmovies?searchParams=${search.title}`)
+        fetch(`https://movie-server-gold.vercel.app/allmovies?searchParams=${search.title}`)
         .then(res => res.json())
         .then(data => {
             setAllMovies(data);

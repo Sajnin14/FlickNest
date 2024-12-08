@@ -40,12 +40,12 @@ const router = createBrowserRouter([
       {
         path: '/allmovies',
         element: <AllMovies></AllMovies>,
-        loader: () => fetch('http://localhost:5000/allmovies')
+        loader: () => fetch('https://movie-server-gold.vercel.app/allmovies')
       },
       {
         path: '/details/:id',
         element: <PrivateRoute><Details></Details></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/allmovies/${params.id}`)
+        loader: ({ params }) => fetch(`https://movie-server-gold.vercel.app/allmovies/${params.id}`)
       },
       {
         path: '/favorites',
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
       {
         path: '/updates/:id',
         element: <PrivateRoute><Updates></Updates></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/allmovies/${params.id}`)
+        loader: ({ params }) => fetch(`https://movie-server-gold.vercel.app/allmovies/${params.id}`)
       },
       {
         path: '/auth/register',
