@@ -19,10 +19,12 @@ const Navbar = () => {
         }
 
         <NavLink to='/celebrity'>Celebrity-Cronicles</NavLink>
+        <NavLink to='/plans'>Our Plans</NavLink>
+        <NavLink to='/contact'>Contact Us</NavLink>
     </div>
     return (
-        <div className="w-11/12 mx-auto py-10">
-            <div className="navbar bg-base-100">
+        <div className="mx-auto py-5 sticky top-0 z-50 bg-white">
+            <div className="navbar w-11/12 mx-auto bg-base-100">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

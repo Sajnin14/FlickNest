@@ -21,6 +21,8 @@ import "./App.css"
 import Error from './Error';
 import ThemeWrapper from './provider/ThemeWrapper';
 import Updates from './Pages/Updates';
+import PricingPlans from './Pages/HomePages/PricingPlans';
+import Contact from './Pages/HomePages/Contact';
 
 
 const router = createBrowserRouter([
@@ -54,6 +56,14 @@ const router = createBrowserRouter([
       {
         path: '/celebrity',
         element: <Celebrity></Celebrity>
+      },
+      {
+        path: '/plans',
+        element: <PricingPlans></PricingPlans>
+      },
+      {
+        path: '/contact',
+        element: <Contact></Contact>
       },
       {
         path: '/updates/:id',

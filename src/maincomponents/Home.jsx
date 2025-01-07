@@ -1,5 +1,6 @@
 import Banner from "../Pages/HomePages/Banner";
 import CelebritySection from "../Pages/HomePages/CelebritySection";
+import Contact from "../Pages/HomePages/Contact";
 import FeaturedMovies from "../Pages/HomePages/FeaturedMovies";
 import PricingPlans from "../Pages/HomePages/PricingPlans";
 
@@ -11,6 +12,7 @@ const Home = () => {
             <FeaturedMovies></FeaturedMovies>
             <CelebritySection></CelebritySection>
             <PricingPlans></PricingPlans>
+            <Contact></Contact>
         </div>
     );
 };
