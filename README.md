@@ -1,7 +1,11 @@
 Website Name: FlickNest
 live URL(client side): https://movie-flicknest.web.app/
 
+overview: FlickNest is a movie portal that allows users to discover, browse, and explore movies. It features movie listings, detailed information, search functionality, and possibly user 
+         reviews or watchlists.
+
 Features: 
+
           i. Movie Listings: Display all movies available in the
                   database with titles, posters, genres, and ratings.
           
@@ -42,8 +46,12 @@ Dependencies:  firebase, jsonWebToken, react-router-dom, react-hook-form, axios,
 
 Steps for run the project locally: 
             1. clone the github repository or simply download the repository
+            
             2. go to command prompt and go to the folder directory by using 'cd'
+            
             3. write code . and enter to visual stdio code from command prompt
+            
             4. write 'npm i' and enter
+            
             5. then write 'npm run dev' to open the website on your browser
 
