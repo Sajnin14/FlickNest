@@ -1,5 +1,6 @@
 Website Name: FlickNest
 live URL(client side): https://movie-flicknest.web.app/
+
 Features: 
           i. Movie Listings: Display all movies available in the
                   database with titles, posters, genres, and ratings.
@@ -23,6 +24,26 @@ Features:
 
 
 
-N.B - (I am using MongoDB version 3.7.3. My data is loading, but sometimes it does not load. After a few minutes, it loads again. )
+Technologies Used: 
+         JavaScript, React,
+         
+         State Management: React Context-API,
+         
+         UI Library: Tailwind CSS,
+         
+         Backend: Firebase, Node.js,
+         
+         Database: MongoDB,
+         
+         Routing: React Router.
 
+         
+Dependencies:  firebase, jsonWebToken, react-router-dom, react-hook-form, axios, tailwind CSS, framer motion, react-icons, sweetalert, react-toastify, react-helmet, lottie-react
+
+Steps for run the project locally: 
+            1. clone the github repository or simply download the repository
+            2. go to command prompt and go to the folder directory by using 'cd'
+            3. write code . and enter to visual stdio code from command prompt
+            4. write 'npm i' and enter
+            5. then write 'npm run dev' to open the website on your browser
 
